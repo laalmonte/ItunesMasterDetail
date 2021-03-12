@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/largeImageLayout"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="30dp"
+            android:background="@color/white"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="3dp"
+            tools:targetApi="lollipop">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLargeImage"
+                android:src="@drawable/ic_no_image"
+                android:layout_width="115dp"
+                android:layout_height="115dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/nameLayout"
+            android:weightSum="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="25dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/largeImageLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNameLabel"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:fontFamily="monospace" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="10sp"
+                android:textColor="@color/link"
+                android:fontFamily="monospace" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/artistLayout"
+            android:weightSum="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/largeImageLayout"
+            app:layout_constraintTop_toBottomOf="@+id/nameLayout"
+            app:layout_constraintEnd_toEndOf="parent">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvArtistNameLabel"
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:text="@string/artis_name"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:fontFamily="monospace" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvArtistName"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:text="@string/artis_name"
+                android:textSize="10sp"
+                android:textColor="@color/link"
+                android:fontFamily="monospace" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvGenre"
+            android:layout_width="0dp"
+            android:textSize="9sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/genre"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:fontFamily="monospace"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:layout_constraintStart_toEndOf="@+id/largeImageLayout"
+            app:layout_constraintTop_toBottomOf="@+id/artistLayout"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReleaseDate"
+            android:layout_width="0dp"
+            android:textSize="9sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/release_date"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:fontFamily="monospace"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:layout_constraintStart_toEndOf="@+id/largeImageLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tvGenre"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/collectionLayout"
+            android:weightSum="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/largeImageLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tvReleaseDate"
+            app:layout_constraintEnd_toEndOf="parent">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCollectionNameLabel"
+                android:layout_width="0dp"
+                android:layout_weight="0.35"
+                android:layout_height="wrap_content"
+                android:text="@string/collection_name"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:fontFamily="monospace" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCollectionName"
+                android:layout_width="0dp"
+                android:layout_weight="0.65"
+                android:layout_height="wrap_content"
+                android:text="@string/collection_name"
+                android:textSize="10sp"
+                android:textColor="@color/link"
+                android:fontFamily="monospace" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTrackTime"
+            android:layout_width="0dp"
+            android:textSize="9sp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/track_time"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:fontFamily="monospace"
+            app:layout_constraintStart_toEndOf="@+id/largeImageLayout"
+            app:layout_constraintTop_toBottomOf="@+id/collectionLayout"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:textSize="10sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/price"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/largeImageLayout"
+            app:layout_constraintEnd_toEndOf="@+id/largeImageLayout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBackToList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/back_to_list"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/link"
+                android:padding="20dp"
+                android:textSize="18sp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

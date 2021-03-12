@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ItunesMasterDetail</string>
+    <string name="exit">Exit</string>
+    <string name="genre">Genre</string>
+    <string name="release_date">Release Date</string>
+    <string name="track_time">Track Time</string>
+    <string name="collection_name">Collection:</string>
+    <string name="price">Price</string>
+    <string name="name">Track:</string>
+    <string name="artis_name">Artist:</string>
+    <string name="title_detail">Preview Detail</string>
+    <string name="sample"><u>Tap to Play Preview</u></string>
+    <string name="cont">Continue</string>
+    <string name="ignore">Ignore</string>
+    <string name="search">Search</string>
+    <string name="input_search">Input text here</string>
+    <string name="back_to_list"><u>back to list</u></string>
+</resources>
