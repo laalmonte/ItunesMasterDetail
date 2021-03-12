@@ -30,6 +30,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var collectiontUrl: String
     private lateinit var trackUrl: String
 
+    // transfer of data from page to page
     object ExtraSpec : BundleSpec() {
         var trck: TrackObject? = null
     }
@@ -42,6 +43,7 @@ class DetailActivity : AppCompatActivity() {
         attachActions()
     }
 
+    // initialize transferred data
     private fun initData(){
         withExtras(ExtraSpec) {
             track = trck
@@ -67,6 +69,7 @@ class DetailActivity : AppCompatActivity() {
                     tvTrackTime.text      = time
                 }
 
+                // Date modifications
                 // '2006-01-01T08:00:00Z'
                 // MMMM dd, YYYY
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -80,6 +83,7 @@ class DetailActivity : AppCompatActivity() {
                     tvReleaseDate.text = release2
                 }
 
+                // currency handling
                 when (it.currency) {
                     "USD" -> {
                         val prc    = "Price: $ " + it.trackPrice.toString()
@@ -95,6 +99,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    // attach actions on buttons and views
     private fun attachActions() {
         tvArtistName.setOnClickListener {
             getUrlFromIntent(it, artistUrl)
@@ -113,6 +118,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    // clickable url on infos
     private fun getUrlFromIntent(view: View, urlIntent:String ) {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(urlIntent)
@@ -121,7 +127,6 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
         finish()
     }
 }

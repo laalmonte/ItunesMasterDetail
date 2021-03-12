@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.securepreferences.SecurePreferences
 
+// Data persistence
 object SessionManager {
     private const val KEY_LAST_VISITED_ID             = "UserSessionManager.KEY_LAST_VISITED_ID"
     private const val KEY_LAST_VISITED_WRAPPER_TYPE   = "UserSessionManager.KEY_LAST_VISITED_WRAPPER_TYPE"

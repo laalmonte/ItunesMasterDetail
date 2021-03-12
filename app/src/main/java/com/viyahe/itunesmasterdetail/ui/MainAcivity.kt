@@ -41,6 +41,7 @@ class MainAcivity : AppCompatActivity(){
         subscribeUi()
     }
 
+    // initializing recycler view
     private fun setupAdapter(){
         itemAdapter = ItemAdapter(onItemSelectCallback)
         itemList.apply {
@@ -49,12 +50,16 @@ class MainAcivity : AppCompatActivity(){
         }
     }
 
+    // subscribing all lifecycle observables
     private fun subscribeUi() {
         mainViewModel.data.observe(this, Observer { response ->
             when(response.status) {
                 Status.ERROR -> {
-                    progressBarAnimation.visibility = View.GONE
-                    itemList.visibility             = View.VISIBLE
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        progressBarAnimation.visibility = View.GONE
+                        itemList.visibility             = View.VISIBLE
+                    }, 2000)
+
                     if (response.message.toString().contains("itunes")){
                         Toast.makeText(this, "Please check network connection and try again...", Toast.LENGTH_SHORT).show()
                     } else {
@@ -63,46 +68,19 @@ class MainAcivity : AppCompatActivity(){
                     subscribeDB()
                 } Status.LOADING -> {}
                 else -> {
-                    progressBarAnimation.visibility = View.GONE
-                    itemList.visibility             = View.VISIBLE
-//                    Toast.makeText(this, response.message.toString(), Toast.LENGTH_SHORT).show()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        progressBarAnimation.visibility = View.GONE
+                        itemList.visibility             = View.VISIBLE
+                    }, 2000)
+
                     subscribeDB()
-                }
-            }
-        })
-
-        mainViewModel.data2.observe(this, Observer { response ->
-            when(response.status) {
-                Status.ERROR -> {
-                    progressBarAnimation.visibility = View.GONE
-                    itemList.visibility             = View.VISIBLE
-                    if (response.message.toString().contains("itunes")){
-                        Toast.makeText(this, "Please check network connection and try again...", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this,response.message.toString(), Toast.LENGTH_SHORT).show()
-                    }
-                    subscribeDB()
-                } Status.LOADING -> {}
-                else -> {
-                    progressBarAnimation.visibility = View.GONE
-                    itemList.visibility             = View.VISIBLE
-                    Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
-                    response.data?.let {
-                        if (it.results.size > 0) {
-                            subscribeDB()
-                        } else {
-                            mainViewModel.clearData()
-                            subscribeDB()
-                        }
-                    }
-
-
                 }
             }
         })
 
     }
 
+    // accessing db
     private fun subscribeDB(){
         mainViewModel.getTracksFromDB().observe(this, Observer {
             if (it.size > 0) {
@@ -152,6 +130,7 @@ class MainAcivity : AppCompatActivity(){
         })
     }
 
+    // call back on recycler
     private val onItemSelectCallback = object : ItemAdapter.OnItemSelectCallback {
         override fun onSelectItem(trackObject: TrackObject) {
             goToDetails(trackObject)
@@ -159,6 +138,7 @@ class MainAcivity : AppCompatActivity(){
     }
 
 
+    // page transition
     private fun goToDetails(collectionObject: TrackObject){
         val trackNullable: TrackObject? = collectionObject
         start<DetailActivity>{
@@ -168,11 +148,13 @@ class MainAcivity : AppCompatActivity(){
         }
     }
 
+    // settings menu ui
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.settings_menu, menu)
         return true
     }
 
+    // settings menu functionalities
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_exit -> {
@@ -186,6 +168,7 @@ class MainAcivity : AppCompatActivity(){
         }
     }
 
+    // holding main page
     override fun onBackPressed() {
         super.onBackPressed()
     }

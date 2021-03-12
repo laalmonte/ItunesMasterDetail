@@ -10,6 +10,7 @@ class ItunesMasterDetail : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // initialize shared prefs
         SessionManager.init(this)
     }
 }

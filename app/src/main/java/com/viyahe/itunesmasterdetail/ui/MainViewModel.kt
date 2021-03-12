@@ -1,5 +1,7 @@
 package com.viyahe.itunesmasterdetail.ui
 
+import android.os.Handler
+import android.os.Looper
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,26 +19,24 @@ class MainViewModel
 ) : ViewModel() {
 
     private val _data = MutableLiveData<Data<Result>>()
-    private val _data2 = MutableLiveData<Data<Result>>()
     val data: LiveData<Data<Result>>
         get() = _data
-
-    val data2: LiveData<Data<Result>>
-        get() = _data2
 
 
     init {
 
     }
-
+    // api call through the repository
     fun getTracks() =
         viewModelScope.launch {
             _data.postValue(Data.loading(null))
             _data.postValue(trackRepository.getTracks())
         }
 
+    // fetching data in room db
     fun getTracksFromDB() : LiveData<MutableList<Tracks>> = trackRepository.getSaveTracks()
 
+    // clear all data for emptying list
     fun clearData() { trackRepository.clearData() }
 
 }

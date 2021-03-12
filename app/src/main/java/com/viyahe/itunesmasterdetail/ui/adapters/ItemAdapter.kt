@@ -29,13 +29,14 @@ class ItemAdapter(private val onItemSelectCallback: OnItemSelectCallback) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(trackList[position], position)
-
     }
 
+    // getting context on page
     fun updateContext(contextParam: Context){
         mContext = contextParam
     }
 
+    // update info on list
     fun updateTrackList(newDataSet: MutableList<TrackObject>) {
         oldTrackList.clear()
         oldTrackList.addAll(newDataSet)
@@ -44,6 +45,7 @@ class ItemAdapter(private val onItemSelectCallback: OnItemSelectCallback) :
         notifyDataSetChanged()
     }
 
+    // clear list
     fun updateEmptyTrackList() {
         oldTrackList.clear()
         trackList = emptyList()
@@ -52,6 +54,7 @@ class ItemAdapter(private val onItemSelectCallback: OnItemSelectCallback) :
     }
 
 
+    // attaching info on list
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItem(obj: TrackObject, position: Int) {
             var name = ""
@@ -72,6 +75,7 @@ class ItemAdapter(private val onItemSelectCallback: OnItemSelectCallback) :
         }
     }
 
+    // callback to main page
     interface OnItemSelectCallback {
         fun onSelectItem(trackObject: TrackObject)
     }
