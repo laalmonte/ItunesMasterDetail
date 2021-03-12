@@ -65,7 +65,7 @@ class MainAcivity : AppCompatActivity(){
                 else -> {
                     progressBarAnimation.visibility = View.GONE
                     itemList.visibility             = View.VISIBLE
-                    Toast.makeText(this, response.message.toString(), Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, response.message.toString(), Toast.LENGTH_SHORT).show()
                     subscribeDB()
                 }
             }
